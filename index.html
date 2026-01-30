@@ -584,7 +584,6 @@
             }
         }
 
-        // Load saved theme
         window.addEventListener('DOMContentLoaded', () => {
             const savedTheme = localStorage.getItem('theme');
             const themeBtn = document.getElementById('theme-toggle');
@@ -646,7 +645,7 @@
             
             document.querySelector('.construction-banner').textContent = t.banner;
             document.querySelector('h1').innerHTML = t.name;
-            document.querySelector('.subtitle').innerHTML = '> ' + t.title;
+            document.querySelector('.subtitle').innerHTML = '' + t.title;
             document.querySelector('.intro').textContent = t.intro;
             document.querySelectorAll('h3')[0].textContent = t.skillsTitle;
             document.querySelectorAll('.category-title')[0].textContent = t.cat1;
