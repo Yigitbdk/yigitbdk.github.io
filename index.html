@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yiğit Badık | Bilgisayar Mühendisi</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background: #0a0e17;
+            color: #c9d1d9;
+            line-height: 1.7;
+            min-height: 100vh;
+            padding: 25px;
+            position: relative;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        body.light-mode {
+            background: #ffffff;
+            color: #1a1a1a;
+        }
+
+        body.light-mode .construction-banner {
+            background: repeating-linear-gradient(
+                45deg,
+                #fff3cd,
+                #fff3cd 10px,
+                #ffeaa7 10px,
+                #ffeaa7 20px
+            );
+            border-color: #856404;
+            color: #856404;
+        }
+
+        body.light-mode .container {
+            border-color: #dee2e6;
+            background: rgba(248, 249, 250, 0.95);
+        }
+
+        body.light-mode header {
+            border-bottom-color: #dee2e6;
+        }
+
+        body.light-mode h1 {
+            color: #0066cc;
+        }
+
+        body.light-mode h1::before,
+        body.light-mode h1::after {
+            color: #6c757d;
+        }
+
+        body.light-mode .subtitle {
+            color: #198754;
+        }
+
+        body.light-mode .intro {
+            color: #495057;
+        }
+
+        body.light-mode .section {
+            border-left-color: #adb5bd;
+        }
+
+        body.light-mode .section::before {
+            background: #0066cc;
+        }
+
+        body.light-mode h3 {
+            color: #dc3545;
+            border-bottom-color: #dee2e6;
+        }
+
+        body.light-mode .category-title {
+            color: #198754;
+        }
+
+        body.light-mode .category-title::before,
+        body.light-mode .category-title::after {
+            color: #adb5bd;
+        }
+
+        body.light-mode .tag {
+            border-color: #adb5bd;
+            color: #495057;
+            background: #f8f9fa;
+        }
+
+        body.light-mode .tag::before {
+            color: #0066cc;
+        }
+
+        body.light-mode .tag:hover {
+            border-color: #0066cc;
+            color: #000000;
+            background: #e7f3ff;
+            box-shadow: 0 0 8px rgba(0, 102, 204, 0.3);
+        }
+
+        body.light-mode .content-text {
+            color: #495057;
+        }
+
+        body.light-mode .contact-info {
+            border-color: #adb5bd;
+            color: #495057;
+            background: #f8f9fa;
+        }
+
+        body.light-mode .contact-info::before {
+            color: #0066cc;
+        }
+
+        body.light-mode .link-item {
+            border-color: #adb5bd;
+            color: #0066cc;
+            background: #f8f9fa;
+        }
+
+        body.light-mode .link-item::before {
+            color: #198754;
+        }
+
+        body.light-mode .link-item:hover {
+            background: #e7f3ff;
+            border-color: #0066cc;
+            color: #004499;
+        }
+
+        body.light-mode .note {
+            background: #d1e7dd;
+            border-left-color: #198754;
+            color: #0f5132;
+        }
+
+        body.light-mode .footer {
+            border-top-color: #dee2e6;
+            color: #6c757d;
+        }
+
+        body.light-mode .control-btn {
+            background: #f8f9fa;
+            border-color: #adb5bd;
+            color: #1a1a1a;
+        }
+
+        body.light-mode .control-btn:hover {
+            background: #e7f3ff;
+            border-color: #0066cc;
+            color: #0066cc;
+        }
+
+        .controls {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+        }
+
+        .control-btn {
+            padding: 8px 15px;
+            background: rgba(30, 41, 59, 0.8);
+            border: 1px solid #30363d;
+            color: #c9d1d9;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85em;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .control-btn:hover {
+            background: rgba(88, 166, 255, 0.2);
+            border-color: #58a6ff;
+        }
+
+        /* Under construction indicator */
+        .construction-banner {
+            background: repeating-linear-gradient(
+                45deg,
+                #1c2433,
+                #1c2433 10px,
+                #252d3d 10px,
+                #252d3d 20px
+            );
+            border: 2px dashed #4a5568;
+            padding: 12px;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 0.85em;
+            color: #fbbf24;
+            letter-spacing: 1px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #21262d;
+            background: rgba(13, 17, 23, 0.6);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding-bottom: 25px;
+            border-bottom: 3px double #30363d;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 2.8em;
+            color: #58a6ff;
+            margin-bottom: 12px;
+            font-weight: normal;
+            letter-spacing: 2px;
+            text-transform: lowercase;
+        }
+
+        h1::before {
+            content: '[ ';
+            color: #8b949e;
+        }
+
+        h1::after {
+            content: ' ]';
+            color: #8b949e;
+        }
+
+        .subtitle {
+            font-size: 1em;
+            color: #7ee787;
+            margin-bottom: 15px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .subtitle::before {
+            content: '> ';
+            color: #8b949e;
+        }
+
+        .intro {
+            color: #8b949e;
+            font-size: 0.95em;
+            max-width: 550px;
+            margin: 20px auto 0;
+            font-style: italic;
+        }
+
+        .section {
+            background: transparent;
+            border-left: 3px solid #30363d;
+            padding: 25px 25px 25px 35px;
+            margin-bottom: 35px;
+            position: relative;
+        }
+
+        .section::before {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 0;
+            width: 9px;
+            height: 9px;
+            background: #58a6ff;
+            border-radius: 50%;
+        }
+
+     /*  h3 {
+            color: #f0883e;
+            font-size: 1.3em;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: normal;
+            border-bottom: 2px dotted #30363d;
+            padding-bottom: 8px;
+            display: inline-block;
+            width: 100%;
+     }  */  
+      
+        h3 {
+            color: #f0883e;
+            font-size: 1.3em;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: normal;
+            text-decoration: underline;
+            text-decoration-style: wavy;
+            text-decoration-color: #30363d;
+        }
+      
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .skill-category {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .category-title {
+            color: #7ee787;
+            font-size: 0.95em;
+            text-align: center;
+            letter-spacing: 1px;
+            padding-bottom: 10px;
+            font-weight: normal;
+        }
+
+        .category-title::before {
+            content: '< ';
+            color: #30363d;
+        }
+
+        .category-title::after {
+            content: ' />';
+            color: #30363d;
+        }
+
+        .tags-column {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .tags-column .tag {
+            text-align: center;
+            width: 100%;
+        }
+
+        .tag {
+            background: transparent;
+            padding: 6px 14px;
+            border: 1px solid #30363d;
+            font-size: 0.85em;
+            color: #8b949e;
+            font-family: 'Courier New', monospace;
+            position: relative;
+        }
+
+        .tag::before {
+            content: '# ';
+            color: #58a6ff;
+        }
+
+        .tag:hover {
+            border-color: #58a6ff;
+            color: #c9d1d9;
+            box-shadow: 0 0 8px rgba(88, 166, 255, 0.3);
+        }
+
+        .content-text {
+            text-align: center;
+            color: #8b949e;
+            line-height: 1.8;
+        }
+
+        .contact-group {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .contact-info {
+            display: inline-block;
+            padding: 10px 18px;
+            background: transparent;
+            border: 1px dashed #30363d;
+            color: #8b949e;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+
+        .contact-info::before {
+            content: '• ';
+            color: #58a6ff;
+        }
+
+        .links-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .link-item {
+            display: inline-block;
+            padding: 10px 20px;
+            background: transparent;
+            border: 1px solid #30363d;
+            color: #58a6ff;
+            text-decoration: none;
+            font-family: 'Courier New', monospace;
+            transition: all 0.2s ease;
+        }
+
+        .link-item::before {
+            content: '→ ';
+            color: #7ee787;
+        }
+
+        .link-item:hover {
+            background: rgba(88, 166, 255, 0.1);
+            border-color: #58a6ff;
+            transform: translateX(3px);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 25px;
+            border-top: 1px dashed #30363d;
+            color: #484f58;
+            font-size: 0.8em;
+            font-family: 'Courier New', monospace;
+        }
+
+        .footer::before {
+            content: '// ';
+        }
+
+        /* Quirky elements */
+        .note {
+            background: rgba(126, 231, 135, 0.05);
+            border-left: 3px solid #7ee787;
+            padding: 10px 15px;
+            margin: 15px auto;
+            font-size: 0.9em;
+            color: #7ee787;
+            text-align: center;
+            max-width: 500px;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            .section {
+                padding: 20px 15px 20px 25px;
+            }
+
+            .section:nth-child(odd),
+            .section:nth-child(even) {
+                margin-left: 0;
+                margin-right: 0;
+            }
+
+            .categories-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .category-title {
+                font-size: 0.9em;
+            }
+          
+            .controls {
+                position: static;
+                justify-content: center;
+                margin-bottom: 20px;
+            }
+
+            header {
+                padding-top: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="construction-banner">
+        ⚠ YAPIM AŞAMASINDA  ⚠
+    </div>
+
+    <div class="container">
+        <header>
+            <div class="controls">
+                <button onclick="toggleTheme()" class="control-btn" id="theme-toggle">☀ light mode</button>
+                <button onclick="toggleLanguage()" class="control-btn" id="lang-toggle">EN</button>
+            </div>
+            <h1>Yigit Badik</h1>
+            <p class="subtitle">bilgisayar_muhendisi</p>
+            <p class="intro">yazılım geliştirme, gömülü sistemler ve teknolojiye dair her şeye meraklıyım.</p>
+        </header>
+
+        <div class="section">
+            <h3>Teknik Yetkinlikler</h3>
+            
+            <div class="categories-grid">
+                <div class="skill-category">
+                    <div class="category-title">Mimari ve Metodoloji</div>
+                    <div class="tags-column">
+                        <span class="tag">N-layer Architecture</span>
+                        <span class="tag">Decoupled & SPA</span>
+                        <span class="tag">MVC Pattern</span>
+                        <span class="tag">GIS Integration</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <div class="category-title">Backend</div>
+                    <div class="tags-column">
+                        <span class="tag">ASP.net Core Api & MVC</span>
+                        <span class="tag">Entity Framework Core</span>
+                        <span class="tag">Identity Authentication</span>
+                        <span class="tag">Fluentvalidation</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <div class="category-title">Frontend</div>
+                    <div class="tags-column">
+                        <span class="tag">React</span>
+                        <span class="tag">Tailwind CSS</span>
+                        <span class="tag">Bootstrap 5</span>
+                        <span class="tag">Api Consumption</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <div class="category-title">Devops & Database</div>
+                    <div class="tags-column">
+                        <span class="tag">Docker</span>
+                        <span class="tag">MSSQL / Azure SQL</span>
+                        <span class="tag">Git/Github</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h3>Şu an neler yapıyorum?</h3>
+            <p class="content-text">aktif olarak projelerimi geliştiriyor ve staj deneyimlerimi bu alana aktarıyorum.</p>
+            <div class="note">
+                Çok yakında detaylı portfolyom burada olacak!
+            </div>
+        </div>
+
+        <div class="section">
+            <h3>İletişim ve Bağlantılar</h3>
+            
+            <div class="contact-group">
+                <span class="contact-info">yigitbadik@gmail.com</span>
+                <span class="contact-info">+90 531 420 89 03</span>
+            </div>
+
+            <div class="links-group">
+                <a href="https://github.com/yigitbdk" target="_blank" class="link-item">github</a>
+                <a href="https://www.linkedin.com/in/yi%C4%9Fit-badik-953457206/" target="_blank" class="link-item">linkedin</a>
+            </div>
+        </div>
+
+        <div class="footer">
+            2026 yigitbdk.github.io | github pages ile oluşturuldu.
+        </div>
+    </div>
+
+    <script>
+        // Theme Toggle
+        function toggleTheme() {
+            const body = document.body;
+            const themeBtn = document.getElementById('theme-toggle');
+            
+            body.classList.toggle('light-mode');
+            
+            if (body.classList.contains('light-mode')) {
+                themeBtn.textContent = '☾ dark mode';
+                localStorage.setItem('theme', 'light');
+            } else {
+                themeBtn.textContent = '☀ light mode';
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // Load saved theme
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme');
+            const themeBtn = document.getElementById('theme-toggle');
+            
+            if (savedTheme === 'light') {
+                document.body.classList.add('light-mode');
+                themeBtn.textContent = '☾ dark mode';
+            }
+        });
+
+        // Language Toggle
+        const translations = {
+            tr: {
+                banner: '⚠ YAPIM AŞAMASINDA ⚠',
+                name: 'Yigit Badik',
+                title: 'bilgisayar_muhendisi',
+                intro: 'yazılım geliştirme, gömülü sistemler ve teknolojiye dair her şeye meraklıyım.',
+                skillsTitle: 'Teknik Yetkinlikler',
+                cat1: 'Mimari ve Metodoloji',
+                cat2: 'Backend',
+                cat3: 'Frontend',
+                cat4: 'Devops & Database',
+                whatTitle: 'Şu an neler yapıyorum?',
+                whatText: 'aktif olarak projelerimi geliştiriyor ve staj deneyimlerimi bu alana aktarıyorum.',
+                note: 'Çok yakında detaylı portfolyom burada olacak!',
+                contactTitle: 'İletişim ve Bağlantılar',
+                github: 'github',
+                linkedin: 'linkedin',
+                footer: '2026 yigitbdk.github.io | github pages ile oluşturuldu.'
+            },
+            en: {
+                banner: '⚠ UNDER CONSTRUCTION ⚠',
+                name: 'Yigit Badik',
+                title: 'computer_engineer',
+                intro: 'passionate about software development, embedded systems, and all things tech.',
+                skillsTitle: 'Technical Skills',
+                cat1: 'Architecture & Methodology',
+                cat2: 'Backend',
+                cat3: 'Frontend',
+                cat4: 'Devops & Database',
+                whatTitle: 'what am i doing now?',
+                whatText: 'actively developing my projects and applying my internship experiences to this field.',
+                note: 'detailed portfolio coming very soon!',
+                contactTitle: 'Contact & Links',
+                github: 'github',
+                linkedin: 'linkedin',
+                footer: '2026 yigitbdk.github.io | built with github pages.'
+            }
+        };
+
+        let currentLang = 'tr';
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'tr' ? 'en' : 'tr';
+            const langBtn = document.getElementById('lang-toggle');
+            langBtn.textContent = currentLang === 'tr' ? 'EN' : 'TR';
+            
+            const t = translations[currentLang];
+            
+            document.querySelector('.construction-banner').textContent = t.banner;
+            document.querySelector('h1').innerHTML = t.name;
+            document.querySelector('.subtitle').innerHTML = '> ' + t.title;
+            document.querySelector('.intro').textContent = t.intro;
+            document.querySelectorAll('h3')[0].textContent = t.skillsTitle;
+            document.querySelectorAll('.category-title')[0].textContent = t.cat1;
+            document.querySelectorAll('.category-title')[1].textContent = t.cat2;
+            document.querySelectorAll('.category-title')[2].textContent = t.cat3;
+            document.querySelectorAll('.category-title')[3].textContent = t.cat4;
+            document.querySelectorAll('h3')[1].textContent = t.whatTitle;
+            document.querySelector('.content-text').textContent = t.whatText;
+            document.querySelector('.note').textContent = t.note;
+            document.querySelectorAll('h3')[2].textContent = t.contactTitle;
+            document.querySelectorAll('.link-item')[0].textContent = t.github;
+            document.querySelectorAll('.link-item')[1].textContent = t.linkedin;
+            document.querySelector('.footer').textContent = t.footer;
+            
+            localStorage.setItem('lang', currentLang);
+        }
+
+        // Load saved language
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('lang');
+            if (savedLang && savedLang !== 'tr') {
+                toggleLanguage();
+            }
+        });
+    </script>
+</body>
+</html>
