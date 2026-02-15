@@ -128,7 +128,7 @@ export default function Navbar() {
           </div>
 
           {/* Divider - Desktop Only */}
-          <span className="hidden md:flex text-blue-400 items-center">//</span>
+          <span className="hidden md:flex text-blue-400 items-center">/</span>
 
           {/* Language Toggle - Responsive */}
           <div className="flex items-center">
