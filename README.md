@@ -133,8 +133,8 @@ JavaScript    0.5%
 For questions, suggestions, or collaborations:
 
 - 📧 **Email:** [yigit@badik.com](mailto:yigitbadik@gmail.com)
-- 💼 **LinkedIn:** [linkedin.com/in/yigitbadik](https://linkedin.com/in/yigitbadik)
-- 🐙 **GitHub:** [github.com/yigitbadik](https://github.com/yigitbadik)
+- 💼 **LinkedIn:** [linkedin.com/in/yigitbadik](https://www.linkedin.com/in/yi%C4%9Fit-badik-953457206/)
+- 🐙 **GitHub:** [github.com/yigitbadik](https://github.com/Yigitbdk)
 - 🌐 **Portfolio:** [yigitbdk.github.io](https://yigitbdk.github.io)
 
 ---
