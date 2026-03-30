@@ -43,10 +43,11 @@ const translations = {
         viewGithub: "GitHub'da Görüntüle ↗"
       },
       {
-        title: "CareerAI - Smart CV Coach",
-        tag: "[PROJECT_03 - DEVAM EDİYOR]",
-        description: "Yapay zeka destekli kariyer yönetim platformu (SaaS). Kullanıcıların PDF CV'lerini analiz ederek iş ilanlarına göre optimize eden, eksik anahtar kelimeleri bulan ve özelleştirilmiş ön yazılar oluşturan bir araç. [Şu an geliştirilme aşamasındadır]",
-        viewGithub: "GitHub'da Görüntüle ↗"
+        title: "Cover Craft",
+        tag: "[PROJECT_03]",
+        description: "Yapay zeka destekli ön yazı üretici (SaaS). CV'ni yükle, iş ilanını yapıştır — Groq (Llama 3.3 70B) ile saniyeler içinde kişiselleştirilmiş ön yazı al. Google Auth, kredi sistemi ve Stripe ödemeleri ile tam donanımlı.",
+        viewGithub: "GitHub'da Görüntüle ↗",
+        viewDemo: "Canlı Demo ↗"
       }
     ],
     footer: {
@@ -88,10 +89,11 @@ const translations = {
         viewGithub: "View on GitHub ↗"
       },
       {
-        title: "CareerAI - Smart CV Coach",
-        tag: "[PROJECT_03 - IN PROGRESS]",
-        description: "AI-powered career management platform (SaaS). Analyzes user PDFs to optimize for job listings, finds missing keywords, and generates customized cover letters. [Currently under development]",
-        viewGithub: "View on GitHub ↗"
+        title: "Cover Craft",
+        tag: "[PROJECT_03]",
+        description: "AI-powered cover letter generator (SaaS). Upload your CV, paste a job description, and get a personalized cover letter in seconds using Groq (Llama 3.3 70B). Full-featured with Google Auth, credit system, and Stripe payments.",
+        viewGithub: "View on GitHub ↗",
+        viewDemo: "Live Demo ↗"
       }
     ],
     footer: {
@@ -240,13 +242,14 @@ const projectsData = [
     github: "https://github.com/tolgaunlu99/EcoSphere"
   },
   {
-    tags: ["Next.js 14", "Gemini AI API", "Supabase", "Stripe/Iyzico", "Tailwind CSS"],
+    tags: ["Next.js", "TypeScript", "Groq / Llama 3.3", "Supabase", "Stripe", "Upstash Redis"],
     direction: "left" as const,
     images: [
-      "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=1920&h=1080&fit=crop&q=90",
-      "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1920&h=1080&fit=crop&q=90"
+      "https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=1920&h=1080&fit=crop&q=90",
+      "/projects/CoverCraftHero.png"
     ],
-    github: "#"
+    github: "https://github.com/Yigitbdk/cover-letter-ai",
+    demo: "https://cover-letter-ai-topaz.vercel.app/"
   },
 ];
 
@@ -408,6 +411,9 @@ export default function Home() {
                 </div>
                 <div className="flex gap-4">
                   <a href={projectsData[index].github} target="_blank" rel="noopener noreferrer" className="brutal bg-slate-800 dark:bg-slate-800 light:bg-white dark:text-slate-200 light:text-slate-900 px-6 py-3 text-xs font-bold uppercase hover:bg-blue-500/10 hover:border-blue-500 transition-all">{project.viewGithub}</a>
+                  {projectsData[index].demo && project.viewDemo && (
+                    <a href={projectsData[index].demo} target="_blank" rel="noopener noreferrer" className="brutal bg-blue-600 text-white px-6 py-3 text-xs font-bold uppercase hover:bg-blue-500 hover:border-blue-400 transition-all">{project.viewDemo}</a>
+                  )}
                 </div>
               </div>
             </div>
